@@ -6,5 +6,6 @@ https://hong-iron.github.io/ 의 첫 화면입니다. 각 프로젝트는 자기
 - `site/robots.txt`: 검색 로봇은 주소 맨 위의 robots.txt만 읽습니다. 여기서 모든 사이트맵을 알려 줍니다.
 - `site/sitemap.xml`: 첫 화면, SMASH 허브, SMASH 게임 전부. 학교를 추가하면 `python3 tools/build_sitemap.py <SMASH 레포>/schools.json`으로 다시 만듭니다. 블로그는 자체 사이트맵(`/Hongs_Blog/sitemap.xml`)을 씁니다.
 - Google Search Console과 네이버 서치어드바이저의 소유 확인 파일도 `site/`에 둡니다(지우면 확인이 풀립니다).
+- `site/favicon-192.png`, `favicon-48.png`, `favicon.ico`: 검색 결과에 나오는 아이콘입니다. 구글은 주소(hong-iron.github.io) 하나에 아이콘 하나만 쓰고, 그 아이콘을 이 첫 화면에서 가져옵니다. 그래서 SMASH와 블로그 검색 결과에도 이 아이콘이 나옵니다. 사이트 이름("Hong-Iron")도 같은 규칙으로 첫 화면의 `WebSite` 구조화 데이터에서 가져옵니다.
 
 `main`에 push하면 GitHub Actions가 `site/`를 GitHub Pages에 올립니다.
