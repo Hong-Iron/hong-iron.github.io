@@ -3,44 +3,245 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hong-Iron</title>
-<meta name="description" content="Hong-Iron의 첫 화면입니다. 우리 학교 캠퍼스를 3D로 부수는 게임 SMASH 대학교와, 프로젝트·공부 노트를 모은 블로그로 갈 수 있습니다.">
+<title>Hong-Iron — Games, projects, and studies.</title>
+<meta name="description" content="HongCheolMin(Hong-Iron)의 첫 화면입니다. 우리 학교 캠퍼스를 3D로 부수는 게임 SMASH 대학교, 프로젝트, 지식 DB, 나의 팡세를 한곳에 모읍니다.">
 <link rel="canonical" href="https://hong-iron.github.io/">
 <meta property="og:title" content="Hong-Iron">
-<meta property="og:description" content="SMASH 대학교(우리 학교 부수기 게임)와 Hong-Iron 블로그">
+<meta property="og:description" content="게임, 프로젝트, 지식 DB, 나의 팡세를 한곳에 모읍니다.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hong-iron.github.io/">
-<meta property="og:image" content="https://hong-iron.github.io/SMASH/og.png">
-<link rel="icon" href="icon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="icon-180.png">
+<meta property="og:site_name" content="Hong-Iron">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://hong-iron.github.io/Hongs_Blog/assets/img/og/site.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hong-iron.github.io/Hongs_Blog/assets/img/og/site.png">
+<link rel="icon" href="/Hongs_Blog/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/Hongs_Blog/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/Hongs_Blog/assets/img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="Hong-Iron" href="/Hongs_Blog/feed.xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Hong-Iron","url":"https://hong-iron.github.io/","inLanguage":"ko","author":{"@type":"Person","name":"HongCheolMin","alternateName":"Hong-Iron"}}</script>
+<script data-goatcounter="https://sassafras.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<!-- the look comes straight from the blog: same stylesheets and scripts under /Hongs_Blog/assets -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/base.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/layout.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/components.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/effects.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/geo.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/robot.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/search.css">
+<link rel="stylesheet" href="/Hongs_Blog/assets/css/widgets.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
 <style>
-/* Layout: one centred column — name, one line, then two large link cards */
-:root { --bg: #f6f4ef; --card: #ffffff; --line: #ddd7cc; --fg: #1d1b18; --muted: #6b665d; --hot: #e2571d; color-scheme: light; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f1115; --card: #171a21; --line: #2a2f3a; --fg: #eef0f4; --muted: #9aa2ae; --hot: #ff7a3d; color-scheme: dark; } }
-:root[data-theme="dark"] { --bg: #0f1115; --card: #171a21; --line: #2a2f3a; --fg: #eef0f4; --muted: #9aa2ae; --hot: #ff7a3d; color-scheme: dark; }
-* { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--fg); font: 400 16px/1.6 "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; }
-main { width: min(720px, 100% - 32px); padding: 48px 0; display: grid; gap: 28px; }
-h1 { margin: 0; font-size: clamp(36px, 7vw, 56px); letter-spacing: -.02em; line-height: 1.05; }
-.lede { margin: -16px 0 0; color: var(--muted); }
-.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-.links a { display: grid; gap: 6px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
-.links a:hover { border-color: var(--hot); transform: translateY(-2px); }
-.links a:focus-visible { outline: 2px solid var(--hot); outline-offset: 3px; }
-.links strong { font-size: 20px; }
-.links span { color: var(--muted); font-size: 14.5px; }
-.links em { margin-top: 6px; font-style: normal; color: var(--hot); font-weight: 600; font-size: 14px; }
-@media (prefers-reduced-motion: reduce) { .links a { transition: none; } .links a:hover { transform: none; } }
+/* root page only: a fourth door for the game, and game cards that show the whole 1200×630 thumbnail */
+.doors.doors--four { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 68rem; }
+.door--smash { --door: #b4532a; }
+body[data-tone="dark"] .door--smash { --door: #f0956a; }
+.grid--projects.grid--smash > .card .card__media { aspect-ratio: 1200 / 630; }
+@media (max-width: 900px) { .doors.doors--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .doors.doors--four { grid-template-columns: 1fr; } }
 </style>
 </head>
-<body>
-<main>
-  <h1>Hong-Iron</h1>
-  <p class="lede">만든 것들을 모아 둔 곳입니다.</p>
-  <nav class="links" aria-label="바로 가기">
-    <a href="/SMASH/"><strong>SMASH 대학교</strong><span>우리 학교 캠퍼스를 3D로 부수는 시험기간 스트레스 해소 게임. 전국 60개 캠퍼스.</span><em>부수러 가기 →</em></a>
-    <a href="/Hongs_Blog/"><strong>Hong-Iron 블로그</strong><span>프로젝트, 지식 DB, 나의 팡세를 한곳에 모은 블로그.</span><em>블로그 보기 →</em></a>
-  </nav>
-</main>
+<body
+  data-geo="confetti"
+  data-bg="paper-cream"
+  data-fx-grain="true"
+  data-fx-reveal="true"
+  data-fx-underline="true"
+>
+  <canvas class="geo-canvas" aria-hidden="true"></canvas>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-logo" href="/" aria-label="Hong-Iron 홈">
+  <svg class="logo-mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false">
+  <rect class="logo-mark__stem" x="7" y="8" width="14" height="48" rx="2"/>
+  <rect class="logo-mark__stem logo-mark__stem--right" x="43" y="8" width="14" height="48" rx="2"/>
+  <circle class="logo-mark__dot" cx="32" cy="32" r="12"/>
+  <path class="logo-mark__wedge" d="M43 8h14v14z"/>
+</svg>
+
+  <span>Hong<em>-</em>Iron</span>
+</a>
+
+    <button type="button" class="site-search-btn" data-search-open data-search-index="/Hongs_Blog/assets/search-index.json" aria-label="모든 문서 검색 (⌘K)">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="site-search-btn__label"><span class="site-search-btn__long">개념, 과목, 글 제목으로 찾기</span><span class="site-search-btn__short">검색</span></span>
+      <kbd class="site-search-btn__kbd">⌘K</kbd>
+    </button>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-list">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <ul id="site-nav-list">
+        <li><a href="/SMASH/">SMASH</a></li>
+        <li><a href="/Hongs_Blog/projects/">Projects</a></li>
+        <li><a href="/Hongs_Blog/studies/">Studies</a></li>
+        <li><a href="/Hongs_Blog/pensees/">Pensées</a></li>
+        <li><a href="/Hongs_Blog/about/">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+  <main>
+    <section class="home-hero container" data-scene="paper">
+      <div class="home-hero__id reveal">
+        <img class="avatar" src="/Hongs_Blog/assets/img/profile.jpg" alt="HongCheolMin" width="56" height="56">
+        <div>
+          <span class="home-hero__name">HongCheolMin</span>
+          <span class="home-hero__role">Chung-Ang Univ. · Software</span>
+        </div>
+      </div>
+      <h1 class="hero__title reveal">Games, projects,<br><em>and studies.</em></h1>
+      <p class="lede hero__lede reveal">만든 게임과 프로젝트, 공부 노트를 한곳에 모읍니다.</p>
+      <nav class="doors doors--four" aria-label="둘러보기">
+        <a class="door door--smash" href="/SMASH/">
+          <svg class="door__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="17" cy="24" r="12" fill="currentColor"/>
+  <path d="M25 15l5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <path d="M32 4v4M36 8h-4M35 3l-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="door__label">SMASH</span>
+          <span class="door__meta">게임 · 60개 캠퍼스</span>
+        </a>
+        <a class="door door--projects" href="/Hongs_Blog/projects/">
+          <svg class="door__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="5" y="5" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"/>
+  <path d="M5 35L35 5" stroke="currentColor" stroke-width="2"/>
+  <circle cx="27" cy="27" r="5" fill="currentColor"/></svg>
+          <span class="door__label">Projects</span>
+          <span class="door__meta">프로젝트</span>
+        </a>
+        <a class="door door--studies" href="/Hongs_Blog/studies/">
+          <svg class="door__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 4L37 34H3z" fill="currentColor" opacity="0.9"/>
+  <circle cx="20" cy="24" r="6.5" fill="var(--card)"/></svg>
+          <span class="door__label">Studies</span>
+          <span class="door__meta">지식 DB</span>
+        </a>
+        <a class="door door--pensees" href="/Hongs_Blog/pensees/">
+          <svg class="door__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M7 36V19a13 13 0 0 1 26 0v17z" fill="none" stroke="currentColor" stroke-width="3"/>
+  <circle cx="20" cy="19" r="4" fill="currentColor"/>
+  <path d="M20 23v13" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="door__label">Pensées</span>
+          <span class="door__meta">나의 팡세</span>
+        </a>
+      </nav>
+    </section>
+
+    <section class="section container" data-scene="linen">
+      <div class="section__header">
+        <div>
+          <span class="eyebrow section__kicker">Game</span>
+          <h2 class="section__title reveal">SMASH 대학교</h2>
+        </div>
+        <a class="section__link" href="/SMASH/">60곳 전체 보기 &rarr;</a>
+      </div>
+      <div class="grid grid--projects grid--smash">
+        <a class="card reveal" href="/SMASH/">
+          <div class="card__media"><img src="/SMASH/og.png" alt="여러 대학 캠퍼스가 3D로 부서지는 화면" loading="lazy"></div>
+          <span class="card__eyebrow tag" style="--tag-color: var(--accent-rust)">Live</span>
+          <h3 class="card__title">SMASH 대학교</h3>
+          <p class="card__desc">우리 학교 캠퍼스를 3D로 부수는 시험기간 스트레스 해소 게임. 전국 60개 캠퍼스 중에서 골라 폭탄, 야구 배트, 레이저, 운석, 지진, 핵폭탄으로 부숩니다. 학교 대항 랭킹도 있습니다.</p>
+        </a>
+        <a class="card reveal" href="/SMASH-CAU/">
+          <div class="card__media"><img src="/SMASH-CAU/og.png" alt="중앙대학교 서울캠퍼스가 부서지는 게임 화면" loading="lazy"></div>
+          <span class="card__eyebrow tag" style="--tag-color: var(--accent-rust)">중앙대</span>
+          <h3 class="card__title">SMASH CAU</h3>
+          <p class="card__desc">처음 만든 캠퍼스. 흑석동 언덕 위 중앙대학교 서울캠퍼스를 부수고 지구 중심까지 파 내려갑니다.</p>
+        </a>
+        <a class="card reveal" href="/SMASH-SNU/">
+          <div class="card__media"><img src="/SMASH-SNU/og.png" alt="서울대학교 관악캠퍼스가 부서지는 게임 화면" loading="lazy"></div>
+          <span class="card__eyebrow tag" style="--tag-color: var(--accent-rust)">서울대</span>
+          <h3 class="card__title">SMASH SNU</h3>
+          <p class="card__desc">건물 203동, 가장 큰 캠퍼스 가운데 하나. 관악산 자락의 서울대학교 관악캠퍼스를 통째로 날려 봅니다.</p>
+        </a>
+        <a class="card card--text reveal" href="/SMASH/#rank" style="--tag-color: var(--accent-rust)">
+          <svg class="card__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="4" y="22" width="9" height="14" fill="currentColor"/><rect x="15.5" y="10" width="9" height="26" fill="currentColor"/><rect x="27" y="17" width="9" height="19" fill="currentColor"/></svg>
+          <span class="card__eyebrow tag">Ranking</span>
+          <h3 class="card__title">학교 대항 파괴 랭킹</h3>
+          <p class="card__desc">게임에서 얻은 점수가 학교 점수로 모입니다. 오늘 어느 학교가 가장 많이 부서졌는지, 우리 학교는 몇 위인지 확인해 보세요. 오늘 순위는 매일 자정에 새로 시작합니다.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section container" data-scene="night">
+      <div class="section__header">
+        <div>
+          <span class="eyebrow section__kicker">Pensées</span>
+          <h2 class="section__title reveal">나의 팡세</h2>
+        </div>
+        <a class="section__link" href="/Hongs_Blog/pensees/">글 전체 &rarr;</a>
+      </div>
+      <div class="grid grid--projects" id="latest-posts">
+        <a class="card card--text" href="/Hongs_Blog/pensees/" style="--tag-color: var(--accent-plum)">
+          <svg class="card__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="15" fill="currentColor"/></svg>
+          <span class="card__eyebrow tag">Pensées</span>
+          <h3 class="card__title">최근 글 보기</h3>
+          <p class="card__desc">블로그의 나의 팡세에서 최근 글을 읽을 수 있습니다.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>&copy; 2026 Hong-Iron. Jekyll로 만들고 GitHub Pages에 올렸습니다.</span>
+    <span>
+      <a href="https://github.com/Hong-Iron">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:hongcheolmin004@gmail.com">메일</a>
+      &nbsp;·&nbsp;
+      <a href="/Hongs_Blog/feed.xml">RSS</a>
+    </span>
+  </div>
+</footer>
+  <div class="robot" data-robot data-base="/Hongs_Blog">
+  <script type="application/json" class="robot__data">{"key": "default", "course": "", "stats": null, "site": {"courses": 21, "notes": 1286}}</script>
+  <div class="robot__dialog" role="dialog" aria-label="홍철과 대화" tabindex="-1" hidden>
+    <span class="robot__name">홍철</span>
+    <button type="button" class="robot__close" aria-label="닫기">&times;</button>
+    <p class="robot__text" aria-hidden="true"></p>
+    <p class="visually-hidden robot__live" aria-live="polite"></p>
+    <span class="robot__more" aria-hidden="true"></span>
+    <svg class="robot__tail" viewBox="0 0 6 5" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="robot__tail-ink" x="0" y="0" width="1" height="1"/><rect class="robot__tail-ink" x="5" y="0" width="1" height="1"/><rect class="robot__tail-ink" x="1" y="1" width="1" height="1"/><rect class="robot__tail-ink" x="5" y="1" width="1" height="1"/><rect class="robot__tail-ink" x="2" y="2" width="1" height="1"/><rect class="robot__tail-ink" x="5" y="2" width="1" height="1"/><rect class="robot__tail-ink" x="3" y="3" width="1" height="1"/><rect class="robot__tail-ink" x="5" y="3" width="1" height="1"/><rect class="robot__tail-ink" x="4" y="4" width="2" height="1"/><rect class="robot__tail-fill" x="1" y="0" width="4" height="1"/><rect class="robot__tail-fill" x="2" y="1" width="3" height="1"/><rect class="robot__tail-fill" x="3" y="2" width="2" height="1"/><rect class="robot__tail-fill" x="4" y="3" width="1" height="1"/></svg>
+    <div class="robot__choices"></div>
+  </div><span class="robot__hint" aria-hidden="true">!</span>
+  <button type="button" class="robot__button" aria-label="홍철에게 물어보기" aria-haspopup="dialog" aria-expanded="false">
+    <svg class="robot__face" viewBox="0 0 24 23" width="72" height="69" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><g class="rf-base"><rect x="11" y="0" width="2" height="1" fill="#b0432c" class="rf-led"/><rect x="11" y="1" width="2" height="1" fill="#6b6255"/><rect x="7" y="2" width="4" height="1" fill="#221f1a"/><rect x="11" y="2" width="2" height="1" fill="#6b6255"/><rect x="13" y="2" width="4" height="1" fill="#221f1a"/><rect x="5" y="3" width="2" height="1" fill="#221f1a"/><rect x="7" y="3" width="10" height="1" fill="#3a3230"/><rect x="17" y="3" width="2" height="1" fill="#221f1a"/><rect x="4" y="4" width="1" height="1" fill="#221f1a"/><rect x="5" y="4" width="5" height="1" fill="#3a3230"/><rect x="10" y="4" width="1" height="1" fill="#6b605a"/><rect x="11" y="4" width="2" height="1" fill="#3a3230"/><rect x="13" y="4" width="1" height="1" fill="#6b605a"/><rect x="14" y="4" width="5" height="1" fill="#3a3230"/><rect x="19" y="4" width="1" height="1" fill="#221f1a"/><rect x="3" y="5" width="1" height="1" fill="#221f1a"/><rect x="4" y="5" width="5" height="1" fill="#3a3230"/><rect x="9" y="5" width="1" height="1" fill="#6b605a"/><rect x="10" y="5" width="4" height="1" fill="#3a3230"/><rect x="14" y="5" width="1" height="1" fill="#6b605a"/><rect x="15" y="5" width="5" height="1" fill="#3a3230"/><rect x="20" y="5" width="1" height="1" fill="#221f1a"/><rect x="2" y="6" width="1" height="1" fill="#221f1a"/><rect x="3" y="6" width="5" height="1" fill="#3a3230"/><rect x="8" y="6" width="1" height="1" fill="#6b605a"/><rect x="9" y="6" width="6" height="1" fill="#3a3230"/><rect x="15" y="6" width="1" height="1" fill="#6b605a"/><rect x="16" y="6" width="5" height="1" fill="#3a3230"/><rect x="21" y="6" width="1" height="1" fill="#221f1a"/><rect x="2" y="7" width="1" height="1" fill="#221f1a"/><rect x="3" y="7" width="8" height="1" fill="#3a3230"/><rect x="11" y="7" width="2" height="1" fill="#f2d2b8"/><rect x="13" y="7" width="8" height="1" fill="#3a3230"/><rect x="21" y="7" width="1" height="1" fill="#221f1a"/><rect x="1" y="8" width="1" height="1" fill="#221f1a"/><rect x="2" y="8" width="8" height="1" fill="#3a3230"/><rect x="10" y="8" width="4" height="1" fill="#f2d2b8"/><rect x="14" y="8" width="8" height="1" fill="#3a3230"/><rect x="22" y="8" width="1" height="1" fill="#221f1a"/><rect x="1" y="9" width="1" height="1" fill="#221f1a"/><rect x="2" y="9" width="7" height="1" fill="#3a3230"/><rect x="9" y="9" width="6" height="1" fill="#f2d2b8"/><rect x="15" y="9" width="7" height="1" fill="#3a3230"/><rect x="22" y="9" width="1" height="1" fill="#221f1a"/><rect x="1" y="10" width="1" height="1" fill="#221f1a"/><rect x="2" y="10" width="5" height="1" fill="#3a3230"/><rect x="7" y="10" width="10" height="1" fill="#f2d2b8"/><rect x="17" y="10" width="5" height="1" fill="#3a3230"/><rect x="22" y="10" width="1" height="1" fill="#221f1a"/><rect x="1" y="11" width="1" height="1" fill="#221f1a"/><rect x="2" y="11" width="3" height="1" fill="#3a3230"/><rect x="5" y="11" width="2" height="1" fill="#f2d2b8"/><rect x="7" y="11" width="3" height="1" fill="#3a2c26"/><rect x="10" y="11" width="4" height="1" fill="#f2d2b8"/><rect x="14" y="11" width="3" height="1" fill="#3a2c26"/><rect x="17" y="11" width="2" height="1" fill="#f2d2b8"/><rect x="19" y="11" width="3" height="1" fill="#3a3230"/><rect x="22" y="11" width="1" height="1" fill="#221f1a"/><rect x="1" y="12" width="1" height="1" fill="#221f1a"/><rect x="2" y="12" width="3" height="1" fill="#3a3230"/><rect x="5" y="12" width="14" height="1" fill="#f2d2b8"/><rect x="19" y="12" width="3" height="1" fill="#3a3230"/><rect x="22" y="12" width="1" height="1" fill="#221f1a"/><rect x="0" y="13" width="1" height="1" fill="#8e959c"/><rect x="1" y="13" width="1" height="1" fill="#221f1a"/><rect x="2" y="13" width="3" height="1" fill="#3a3230"/><rect x="5" y="13" width="14" height="1" fill="#f2d2b8"/><rect x="19" y="13" width="3" height="1" fill="#3a3230"/><rect x="22" y="13" width="1" height="1" fill="#221f1a"/><rect x="23" y="13" width="1" height="1" fill="#8e959c"/><rect x="0" y="14" width="1" height="1" fill="#8e959c"/><rect x="1" y="14" width="1" height="1" fill="#221f1a"/><rect x="2" y="14" width="3" height="1" fill="#3a3230"/><rect x="5" y="14" width="14" height="1" fill="#f2d2b8"/><rect x="19" y="14" width="3" height="1" fill="#3a3230"/><rect x="22" y="14" width="1" height="1" fill="#221f1a"/><rect x="23" y="14" width="1" height="1" fill="#8e959c"/><rect x="1" y="15" width="1" height="1" fill="#221f1a"/><rect x="2" y="15" width="3" height="1" fill="#3a3230"/><rect x="5" y="15" width="2" height="1" fill="#f2d2b8"/><rect x="7" y="15" width="2" height="1" fill="#eba596"/><rect x="9" y="15" width="2" height="1" fill="#f2d2b8"/><rect x="11" y="15" width="2" height="1" fill="#dcae8e"/><rect x="13" y="15" width="2" height="1" fill="#f2d2b8"/><rect x="15" y="15" width="2" height="1" fill="#eba596"/><rect x="17" y="15" width="2" height="1" fill="#f2d2b8"/><rect x="19" y="15" width="3" height="1" fill="#3a3230"/><rect x="22" y="15" width="1" height="1" fill="#221f1a"/><rect x="1" y="16" width="1" height="1" fill="#221f1a"/><rect x="2" y="16" width="3" height="1" fill="#3a3230"/><rect x="5" y="16" width="14" height="1" fill="#f2d2b8"/><rect x="19" y="16" width="3" height="1" fill="#3a3230"/><rect x="22" y="16" width="1" height="1" fill="#221f1a"/><rect x="1" y="17" width="1" height="1" fill="#221f1a"/><rect x="2" y="17" width="3" height="1" fill="#3a3230"/><rect x="5" y="17" width="14" height="1" fill="#f2d2b8"/><rect x="19" y="17" width="3" height="1" fill="#3a3230"/><rect x="22" y="17" width="1" height="1" fill="#221f1a"/><rect x="2" y="18" width="1" height="1" fill="#221f1a"/><rect x="3" y="18" width="2" height="1" fill="#3a3230"/><rect x="5" y="18" width="1" height="1" fill="#dcae8e"/><rect x="6" y="18" width="12" height="1" fill="#f2d2b8"/><rect x="18" y="18" width="1" height="1" fill="#dcae8e"/><rect x="19" y="18" width="2" height="1" fill="#3a3230"/><rect x="21" y="18" width="1" height="1" fill="#221f1a"/><rect x="3" y="19" width="1" height="1" fill="#221f1a"/><rect x="4" y="19" width="1" height="1" fill="#3a3230"/><rect x="5" y="19" width="1" height="1" fill="#221f1a"/><rect x="6" y="19" width="1" height="1" fill="#dcae8e"/><rect x="7" y="19" width="10" height="1" fill="#f2d2b8"/><rect x="17" y="19" width="1" height="1" fill="#dcae8e"/><rect x="18" y="19" width="1" height="1" fill="#221f1a"/><rect x="19" y="19" width="1" height="1" fill="#3a3230"/><rect x="20" y="19" width="1" height="1" fill="#221f1a"/><rect x="4" y="20" width="3" height="1" fill="#221f1a"/><rect x="7" y="20" width="1" height="1" fill="#dcae8e"/><rect x="8" y="20" width="8" height="1" fill="#f2d2b8"/><rect x="16" y="20" width="1" height="1" fill="#dcae8e"/><rect x="17" y="20" width="3" height="1" fill="#221f1a"/><rect x="6" y="21" width="2" height="1" fill="#221f1a"/><rect x="8" y="21" width="1" height="1" fill="#dcae8e"/><rect x="9" y="21" width="6" height="1" fill="#f2d2b8"/><rect x="15" y="21" width="1" height="1" fill="#dcae8e"/><rect x="16" y="21" width="2" height="1" fill="#221f1a"/><rect x="8" y="22" width="8" height="1" fill="#221f1a"/></g><g class="rf-eyes rf-eyes--open"><rect x="8" y="13" width="2" height="1" fill="#221f1a"/><rect x="14" y="13" width="2" height="1" fill="#221f1a"/><rect x="7" y="14" width="1" height="1" fill="#221f1a"/><rect x="16" y="14" width="1" height="1" fill="#221f1a"/></g><g class="rf-eyes rf-eyes--blink"><rect x="7" y="14" width="3" height="1" fill="#221f1a"/><rect x="14" y="14" width="3" height="1" fill="#221f1a"/></g><g class="rf-eyes rf-eyes--happy"><rect x="8" y="13" width="1" height="1" fill="#221f1a"/><rect x="15" y="13" width="1" height="1" fill="#221f1a"/><rect x="7" y="14" width="1" height="1" fill="#221f1a"/><rect x="9" y="14" width="1" height="1" fill="#221f1a"/><rect x="14" y="14" width="1" height="1" fill="#221f1a"/><rect x="16" y="14" width="1" height="1" fill="#221f1a"/></g><g class="rf-mouth rf-mouth--smile"><rect x="8" y="16" width="1" height="1" fill="#6b2b25"/><rect x="9" y="16" width="6" height="1" fill="#fffaf0"/><rect x="15" y="16" width="1" height="1" fill="#6b2b25"/><rect x="9" y="17" width="1" height="1" fill="#6b2b25"/><rect x="10" y="17" width="4" height="1" fill="#b84a42"/><rect x="14" y="17" width="1" height="1" fill="#6b2b25"/><rect x="10" y="18" width="4" height="1" fill="#6b2b25"/></g><g class="rf-mouth rf-mouth--talk"><rect x="8" y="16" width="1" height="1" fill="#6b2b25"/><rect x="9" y="16" width="6" height="1" fill="#fffaf0"/><rect x="15" y="16" width="1" height="1" fill="#6b2b25"/><rect x="9" y="17" width="1" height="1" fill="#6b2b25"/><rect x="10" y="17" width="4" height="1" fill="#b84a42"/><rect x="14" y="17" width="1" height="1" fill="#6b2b25"/><rect x="9" y="18" width="1" height="1" fill="#6b2b25"/><rect x="10" y="18" width="4" height="1" fill="#b84a42"/><rect x="14" y="18" width="1" height="1" fill="#6b2b25"/><rect x="10" y="19" width="4" height="1" fill="#6b2b25"/></g></svg>
+  </button>
+</div>
+  <script src="/Hongs_Blog/assets/js/nav.js" defer></script>
+<script src="/Hongs_Blog/assets/js/effects.js" defer></script>
+<script src="/Hongs_Blog/assets/js/notifications.js" defer></script>
+<script src="/Hongs_Blog/assets/js/geo.js" defer></script>
+<script src="/Hongs_Blog/assets/js/robot.js" defer></script>
+<script src="/Hongs_Blog/assets/js/search.js" defer></script>
+  <script>
+  // latest posts from the blog feed (same site); the static card stays if the feed cannot be read
+  (function () {
+    var box = document.getElementById('latest-posts');
+    fetch('/Hongs_Blog/feed.xml').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (xml) {
+      var doc = new DOMParser().parseFromString(xml, 'application/xml');
+      var entries = Array.prototype.slice.call(doc.getElementsByTagName('entry'), 0, 4);
+      if (!entries.length) return;
+      var shapes = ['<path d="M4 24a16 16 0 0 1 32 0z" fill="currentColor"/>', '<circle cx="20" cy="20" r="15" fill="currentColor"/>', '<rect x="6" y="6" width="28" height="28" rx="3" fill="currentColor"/>'];
+      box.replaceChildren();
+      entries.forEach(function (e, i) {
+        var get = function (t) { var n = e.getElementsByTagName(t)[0]; return n ? n.textContent.trim() : ''; };
+        var link = e.getElementsByTagName('link')[0];
+        var a = document.createElement('a');
+        a.className = 'card card--text'; a.href = link ? link.getAttribute('href') : '/Hongs_Blog/pensees/';
+        a.style.setProperty('--tag-color', 'var(--accent-plum)');
+        a.innerHTML = '<svg class="card__glyph" viewBox="0 0 40 40" aria-hidden="true" focusable="false">' + shapes[i % shapes.length] + '</svg><span class="card__eyebrow tag">Pensées</span><h3 class="card__title"></h3><p class="card__desc"></p>';
+        a.querySelector('.card__title').textContent = get('title');
+        a.querySelector('.card__desc').textContent = get('summary');
+        box.append(a);
+      });
+    }).catch(function () { /* keep the static card */ });
+  })();
+  </script>
 </body>
 </html>
