@@ -47,10 +47,7 @@ ld = {
         {"@type": "WebSite", "name": "SMASH 대학교", "alternateName": "우리 학교 부수기 게임", "url": "https://smash-univ.app/", "inLanguage": "ko"},
         {"@type": "ItemList", "name": "SMASH 대학교 캠퍼스 목록", "numberOfItems": len(schools),
          "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": s["url"], "name": f'{s["campus"]} 부수기 게임'} for i, s in enumerate(by_name)]},
-        # breadcrumb: Google shows "Hong-Iron › SMASH 대학교" in place of the bare address
-        {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Hong-Iron", "item": "https://hong-iron.github.io/"},
-            {"@type": "ListItem", "position": 2, "name": "SMASH 대학교", "item": "https://smash-univ.app/"}]},
+        # 이 레포가 주소 맨 위(smash-univ.app/)이므로 위로 올라갈 단계(breadcrumb)가 없다. 사이트 이름은 위의 WebSite에서 가져간다
     ],
 }
 # 지도: 남한 시도 경계(KOSTAT 2013, 자유 이용 — github.com/southkorea/southkorea-maps)를 8개 구역으로 묶어 SVG로 그린다.
@@ -129,3 +126,16 @@ out = (tpl.replace("__SCHOOLS__", blob(schools)).replace("__HUB_CONFIG__", blob(
        .replace("__RANK_HIDDEN__", " hidden" if cfg.get("rankingPaused") else ""))
 (root / "site" / "index.html").write_text(out, encoding="utf-8")
 print("site/index.html", len(out.encode()) // 1024, "KB,", len(schools), "schools")
+
+# 사이트맵과 robots.txt: 이 레포가 smash-univ.app 맨 위이므로, 검색 로봇이 읽는 robots.txt는 여기 것 하나뿐이다.
+# 같은 주소 아래의 학교 게임(smash-univ.app/SMASH-<코드>/)을 모두 싣고, 블로그는 자기 사이트맵을 쓴다
+from xml.sax.saxutils import escape
+SITE = "https://smash-univ.app/"
+urls = [SITE, SITE + "privacy.html"] + [s["url"] for s in sorted(schools, key=lambda s: s["code"])]
+assert all(u.startswith(SITE) for u in urls), "schools.json에 smash-univ.app 밖의 주소가 있다"
+body = "".join(f"  <url><loc>{escape(u)}</loc><lastmod>{today}</lastmod></url>\n" for u in urls)
+(root / "site" / "sitemap.xml").write_text(
+    f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n', encoding="utf-8")
+(root / "site" / "robots.txt").write_text(
+    f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\nSitemap: {SITE}Hongs_Blog/sitemap.xml\n", encoding="utf-8")
+print("site/sitemap.xml", len(urls), "urls")

@@ -61,7 +61,7 @@
     "tag": "업데이트",
     "title": "그래픽 대규모 업데이트: 캠퍼스가 진짜처럼",
     "body": "144개 캠퍼스 모두 바뀌었어요. 구석 그림자와 잔디·보도블록 바닥이 생겼고, 국토교통부 브이월드 자료로 빠진 건물 3,949동과 실제 층수를 채웠어요. 125개 캠퍼스 945동은 학교 사진을 보고 색을 맞췄고, 지붕 색은 항공사진에서 쟀어요. 게임 화면도 깔끔해졌고, 학교 목록에서 ☆로 우리 학교를 맨 위에 고정할 수 있어요.",
-    "url": "https://hong-iron.github.io/SMASH-CAU/",
+    "url": "https://smash-univ.app/SMASH-CAU/",
     "image": "notice-update-1025.webp",
     "cta": "바뀐 캠퍼스 보러 가기"
   },
@@ -83,8 +83,8 @@
     "tag": "새 게임",
     "title": "종강 파이터 출시",
     "body": "교수님을 직접 만들어 싸우는 도트 격투 게임입니다. 연타로 과제를 내고, 말풍선 공격은 [반박!]으로 막으세요. 단과대 7곳 대항 연승 랭킹과 친구 결투장 링크도 있습니다.",
-    "url": "https://hong-iron.github.io/JONGGANG-FIGHTER/",
-    "image": "https://hong-iron.github.io/JONGGANG-FIGHTER/og.png",
+    "url": "https://smash-univ.app/JONGGANG-FIGHTER/",
+    "image": "https://smash-univ.app/JONGGANG-FIGHTER/og.png",
     "cta": "한 판 하러 가기",
     "pixel": true
   }
