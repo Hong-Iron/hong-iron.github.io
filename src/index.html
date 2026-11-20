@@ -375,14 +375,21 @@ button:active, .hits a:active { transform: translateY(1px); }
 
 @media (max-width: 640px) { .scene { height: 440px; } .top { padding-top: 12px; } }
 @media (prefers-reduced-motion: reduce) { .card, .card:active, button:active { transform: none; transition: none; } }
+
+/* 겨울: 화면 앞으로 눈이 내린다. 그림일 뿐이라 누르기는 아래로 통과하고, 응원 창·떠 있는 버튼(z 50, 60)보다는 뒤.
+   높이는 100lvh(가장 큰 화면)로 잡아 휴대폰 주소창이 접혔다 펴질 때 다시 만들지 않는다 */
+#snow { position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100lvh; z-index: 40; pointer-events: none; }
+.snow-btn { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; white-space: nowrap; }
+.snow-btn:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
 </style>
 </head>
 <body>
+<canvas id="snow" aria-hidden="true" hidden></canvas>
 <div class="scene" aria-hidden="true"><img src="hero.webp" alt="" width="1600" height="640" fetchpriority="high"></div>
 <main class="wrap">
   <div class="topbar">
   <nav class="games" aria-label="SMASH 게임"><a href="https://smash-univ.app/" aria-current="page">SMASH 대학교</a><a href="https://company.smash-univ.app/" data-ev="hub-to-company">SMASH 회사 <span class="new">NEW</span></a></nav>
-  <p class="maker">만든 사람 <a href="https://x.com/Hong_Iron_DEV" target="_blank" rel="noopener" id="x-link">@Hong_Iron_DEV</a> · <a href="https://smash-univ.app/Hongs_Blog/" target="_blank" rel="noopener" id="blog-link">블로그 ↗</a></p>
+  <p class="maker">만든 사람 <a href="https://x.com/Hong_Iron_DEV" target="_blank" rel="noopener" id="x-link">@Hong_Iron_DEV</a> · <a href="https://smash-univ.app/Hongs_Blog/" target="_blank" rel="noopener" id="blog-link">블로그 ↗</a> · <button type="button" class="snow-btn" id="snow-btn">❄ 눈 끄기</button></p>
   </div>
   <div class="top">
   <header class="hero">
@@ -568,6 +575,70 @@ button:active, .hits a:active { transform: translateY(1px); }
   document.querySelectorAll('.game').forEach(function (a) {
     a.addEventListener('click', function () { try { var g = window.goatcounter; if (g && g.count) g.count({ path: 'hub-game-' + a.dataset.id, title: 'SMASH hub', event: true }); } catch (e) {} });
   });
+  // 눈 내림: 먼 눈(작고 흐리고 느림)부터 가까운 눈(크고 빠름)까지 깊이가 다른 눈송이가 바람에 흔들리며 내린다. 스크롤하면 가까운 눈이 더 움직인다.
+  // '눈 끄기'는 smash-hub-snow=0으로 기억한다. 기억한 값이 없으면 게임에서 눈을 껐을 때(smash-snow=0, 같은 출처)와 '동작 줄이기' 설정일 때 꺼진 채로 시작한다
+  (function () {
+    var cv = document.getElementById('snow'), btn = document.getElementById('snow-btn');
+    var ctx = cv.getContext && cv.getContext('2d');
+    if (!ctx) { btn.hidden = true; return; }
+    var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    var pref = get('smash-hub-snow');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var on = pref ? pref === '1' : !(get('smash-snow') === '0' || reduce);
+    // 눈송이 한 개: 가운데가 하얗고 가장자리가 부드럽게 사라지는 점을 한 번 그려 두고 크기만 바꿔 찍는다
+    var S = 32, dot = document.createElement('canvas'); dot.width = dot.height = S;
+    var g = dot.getContext('2d'), rg = g.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+    rg.addColorStop(0, 'rgba(255,255,255,1)'); rg.addColorStop(.55, 'rgba(255,255,255,.95)'); rg.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, S, S);
+    var W = 0, H = 0, flakes = [], raf = 0, last = 0, t = 0, fade = 0, sy = window.scrollY;
+    function flake(y) {
+      var z = Math.pow(Math.random(), 1.4), s = .8 + Math.random() * .4;   // z: 0 먼 눈 ~ 1 가까운 눈 (먼 눈이 더 많다)
+      return { x: Math.random() * W, y: y, z: z, d: 3 + z * 7, a: .5 + z * .45, vy: (22 + z * 68) * s,
+               amp: 4 + z * 16, f: .5 + Math.random() * .9, ph: Math.random() * 6.28 };
+    }
+    function resize() {
+      var w = cv.clientWidth, h = cv.clientHeight, k = Math.min(2, window.devicePixelRatio || 1);
+      if (!w || !h) return;
+      if (W) flakes.forEach(function (p) { p.x *= w / W; p.y *= h / H; });
+      W = w; H = h; cv.width = Math.round(w * k); cv.height = Math.round(h * k); ctx.setTransform(k, 0, 0, k, 0, 0);
+      var n = Math.round(Math.min(240, w * h / 6000));   // 휴대폰 55개쯤, PC 200개쯤
+      while (flakes.length < n) flakes.push(flake(Math.random() * h));
+      while (flakes.length > n) flakes.splice(Math.floor(Math.random() * flakes.length), 1);
+      flakes.sort(function (a, b) { return a.z - b.z; });   // 먼 눈부터 그린다
+    }
+    function frame(now) {
+      raf = requestAnimationFrame(frame);
+      var dt = Math.min(.05, (now - last) / 1000 || 0); last = now; t += dt;
+      fade = Math.min(1, fade + dt / 1.2);
+      var wind = 10 * Math.sin(t * .07) + 5 * Math.sin(t * .23 + 1);   // 천천히 바뀌는 바람(px/s)
+      var dy = window.scrollY - sy; sy = window.scrollY;
+      dy = Math.max(-60, Math.min(60, dy));                              // 맨 위로 가기 같은 큰 점프는 조금만 따라간다
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < flakes.length; i++) {
+        var p = flakes[i];
+        p.y += p.vy * dt - dy * p.z * .35;
+        p.x += (wind * (.4 + p.z) + Math.cos(t * p.f + p.ph) * p.amp * p.f) * dt;
+        if (p.y > H + p.d) { p.y = -p.d; p.x = Math.random() * W; }
+        else if (p.y < -p.d) { p.y = H + p.d; p.x = Math.random() * W; }
+        if (p.x < -p.d) p.x += W + 2 * p.d; else if (p.x > W + p.d) p.x -= W + 2 * p.d;
+        ctx.globalAlpha = p.a * fade;
+        ctx.drawImage(dot, p.x - p.d / 2, p.y - p.d / 2, p.d, p.d);
+      }
+    }
+    function start() {
+      cv.hidden = false; resize(); fade = 0; sy = window.scrollY; last = performance.now();
+      cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
+    }
+    function stop() { cancelAnimationFrame(raf); ctx.clearRect(0, 0, W, H); cv.hidden = true; }
+    function label() { btn.textContent = on ? '❄ 눈 끄기' : '❄ 눈 내리기'; }
+    window.addEventListener('resize', function () { if (on) resize(); });
+    btn.addEventListener('click', function () {
+      on = !on; label(); on ? start() : stop();
+      try { localStorage.setItem('smash-hub-snow', on ? '1' : '0'); } catch (e) { /* storage blocked: lasts until the page closes */ }
+      try { var gc = window.goatcounter; if (gc && gc.count) gc.count({ path: on ? 'hub-snow-on' : 'hub-snow-off', title: 'SMASH hub', event: true }); } catch (e) {}
+    });
+    label(); if (on) start();
+  })();
 </script>
 <script>
   (function () {
