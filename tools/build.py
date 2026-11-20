@@ -131,7 +131,10 @@ print("site/index.html", len(out.encode()) // 1024, "KB,", len(schools), "school
 # 같은 주소 아래의 학교 게임(smash-univ.app/SMASH-<코드>/)을 모두 싣고, 블로그는 자기 사이트맵을 쓴다
 from xml.sax.saxutils import escape
 SITE = "https://smash-univ.app/"
-urls = [SITE, SITE + "privacy.html"] + [s["url"] for s in sorted(schools, key=lambda s: s["code"])]
+import sys
+sys.path.insert(0, str(root / "tools"))
+import pages   # 안내 글 페이지(src/pages/*.html → site/*.html)
+urls = [SITE] + pages.build() + [SITE + "privacy.html"] + [s["url"] for s in sorted(schools, key=lambda s: s["code"])]
 assert all(u.startswith(SITE) for u in urls), "schools.json에 smash-univ.app 밖의 주소가 있다"
 body = "".join(f"  <url><loc>{escape(u)}</loc><lastmod>{today}</lastmod></url>\n" for u in urls)
 (root / "site" / "sitemap.xml").write_text(

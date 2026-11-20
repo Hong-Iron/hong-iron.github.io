@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://smash-univ.app/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://smash-univ.app/about.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://smash-univ.app/guide.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://smash-univ.app/making.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://smash-univ.app/updates.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://smash-univ.app/privacy.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://smash-univ.app/SMASH-AJOU/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://smash-univ.app/SMASH-AJU-MOTOR/</loc><lastmod>2026-11-20</lastmod></url>
